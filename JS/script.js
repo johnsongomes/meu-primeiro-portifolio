@@ -11,9 +11,9 @@ function mostrarMensagem() {
         return;
     }
 
-    resultado.textContent = "Olá, " + nome + "! Bem-vindo ao meu site.";
+    resultado.textContent = "Olá, " + nome + "! Bem-vindo ao meu site. click aqui --->>";
     resultado.style.color = "#006400";
-    resultado.insertAdjacentHTML("beforeend", " <a href=\"https://www.youtube.com/@Johnsongomesof\" id=\"link-resultado\" target=\"_blank\">click aqui para me conhecer.</a>");}
+    resultado.insertAdjacentHTML("beforeend", " <a href=\"https://www.youtube.com/@Johnsongomesof\" id=\"link-resultado\" target=\"_blank\">conhecer.</a>");}
 
 document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault(); // Impede o envio do formulário
