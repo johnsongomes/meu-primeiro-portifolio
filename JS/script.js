@@ -1,5 +1,5 @@
 // Suprime o alerta inicial para melhor
-window.alert("Olá, Desconhecido!");
+// window.alert("Olá, Desconhecido!");
 
 function mostrarMensagem() {
     var nome = document.getElementById("nome").value.trim(); // Obtém o valor do campo de entrada
