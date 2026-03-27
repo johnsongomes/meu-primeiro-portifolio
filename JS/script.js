@@ -11,11 +11,11 @@ function mostrarMensagem() {
         return;
     }
 
-    resultado.textContent = "Olá, " + nome + "! Bem-vindo ao meu site. click aqui -->>";
+    resultado.textContent = "Olá, " + nome + "! Bem-vindo ao meu site. click aqui --->>";
     resultado.style.color = "#006400";
     resultado.insertAdjacentHTML("beforeend", "<div><a href=\"https://github.com/johnsongomes\" class=\"text-white me-3\"><i class=\"bi bi-github\"></i></a><div><a href=\"https://www.youtube.com/@Johnsongomesof\" class=\"text-white me-3\"><i class=\"bi bi-youtube\"></i></a><a href=\"https://www.linkedin.com/in/johnson-gomes-19060295/\" class=\"text-white me-3\"><i class=\"bi bi-linkedin\"></i></a><a href=\"mailto:johnsongomes@gmail.com\" class=\"text-white\"><i class=\"bi bi-envelope\"></i></a></div>");}
 
-document.querySelector("form-primario").addEventListener("click", function(event) {
+document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault(); // Impede o envio do formulário
     mostrarMensagem(); // Chama a função para mostrar a mensagem
 });
@@ -33,10 +33,10 @@ window.scrollTo({ top: 0, behavior: 'smooth' });
 //script formulario de contato
  document.getElementById('form-contato').addEventListener('submit', function (e) {
      e.preventDefault();
-const nome2 = document.getElementById('nome2').value;
+const nome = document.getElementById('nome').value;
 const email = document.getElementById('email').value;
 const mensagem = document.getElementById('mensagem').value;
-alert(`Obrigado, ${nome2}! Sua mensagem foi enviada com sucesso.\n\nE-mail: 
+alert(`Obrigado, ${nome}! Sua mensagem foi enviada com sucesso.\n\nE-mail: 
 ${email}\nMensagem: ${mensagem}`);
 this.reset();
 });
