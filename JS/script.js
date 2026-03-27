@@ -70,19 +70,19 @@ if (formContato) {
 }
 
 
-formcontato.addEventListener('submit', async (ev) => {
+formcontato.addEventListener('submit', function(ev) => {
   ev.preventDefault();
   const contato = {
     nome: document.getElementById('nome').value.trim(),
     email: document.getElementById('email').value.trim(),
     mensagem: document.getElementById('mensagem').value.trim()
   };
-  const resultado = await salvarContatoNoGitHub(contato);
-  if (resultado.ok) {
+  const resultado2 = await salvarContatoNoGitHub(contato);
+  if (resultado2.ok) {
     alert('✅ Contato salvo com sucesso!');
     document.getElementById('form-contato').reset();
   } else {
-    alert('❌ Erro: ' + resultado.error);
+    alert('❌ Erro: ' + resultado2.error);
   }
 });
 
