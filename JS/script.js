@@ -31,7 +31,7 @@ window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 //script formulario de contato
- document.getElementById('form-contato').addEventListener('submit', function (e) {
+ document.getElementById('#form-contato').addEventListener('submit', function (e) {
      e.preventDefault();
      const nome2 = document.getElementById('nome2').value.trim();
      const email = document.getElementById('email').value.trim();
