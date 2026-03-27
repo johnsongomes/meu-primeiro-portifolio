@@ -33,10 +33,10 @@ window.scrollTo({ top: 0, behavior: 'smooth' });
 //script formulario de contato
  document.getElementById('form-contato').addEventListener('submit', function (e) {
      e.preventDefault();
-const nome = document.getElementById('nome2').value;
+const nome2 = document.getElementById('nome2').value;
 const email = document.getElementById('email').value;
 const mensagem = document.getElementById('mensagem').value;
-alert(`Obrigado, ${nome}! Sua mensagem foi enviada com sucesso.\n\nE-mail: 
+alert(`Obrigado, ${nome2}! Sua mensagem foi enviada com sucesso.\n\nE-mail: 
 ${email}\nMensagem: ${mensagem}`);
 this.reset();
 });
