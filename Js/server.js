@@ -1,10 +1,13 @@
 // server.js
+require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const { Octokit } = require('@octokit/rest');
+const cors = require('cors');
 
 const app = express();
+app.use(cors()); // Permite requisições de qualquer origem
 app.use(express.json());
 
 const GITHUB_TOKEN = process.env.GH_TOKEN;
