@@ -49,15 +49,17 @@ if (formContato) {
 
         alert(`Obrigado, ${nome}! Sua mensagem foi enviada com sucesso.\n\nE-mail: ${email}\nMensagem: ${mensagem}`);
 
-        // Enviar para API (se servidor estiver rodando)
-        fetch('/api/contato', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nome, email, mensagem })
-        })
-        .then(response => response.json())
-        .then(data => console.log('Contato enviado:', data))
-        .catch(error => console.error('Erro ao enviar contato:', error));
+        // Enviar para API apenas se estiver rodando localmente
+        if (window.location.hostname === 'localhost') {
+            fetch('/api/contato', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nome, email, mensagem })
+            })
+            .then(response => response.json())
+            .then(data => console.log('Contato enviado:', data))
+            .catch(error => console.error('Erro ao enviar contato:', error));
+        }
 
         const contatos = JSON.parse(localStorage.getItem('contatos')) || [];
         contatos.push({ nome: nome, email: email, mensagem: mensagem, data: new Date().toISOString() });
