@@ -68,14 +68,6 @@ if (formContato) {
         this.reset();
     }); 
 }
-<script src="Js/contato.js"></script>
-
-<form id="form-contato">
-  <input type="text" id="nome" placeholder="Seu nome" required>
-  <input type="email" id="email" placeholder="Seu email" required>
-  <textarea id="mensagem" placeholder="Sua mensagem" required></textarea>
-  <button type="submit">Enviar</button>
-</form>
 
 
 document.getElementById('form-contato').addEventListener('submit', async (e) => {
