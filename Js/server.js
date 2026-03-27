@@ -22,6 +22,31 @@ if (!GITHUB_TOKEN) {
 
 const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
+async function saveContatoToGitHub(contatos) {
+  const content = Buffer.from(JSON.stringify(contatos, null, 2)).toString('base64');
+  
+  try {
+    // Tenta obter o arquivo existente para pegar seu SHA
+    const existingFile = await octokit.repos.getContent({
+      owner: OWNER,
+      repo: REPO,
+      path: 'Js/contatos.json',
+    }).catch(() => null);
+
+    await octokit.repos.createOrUpdateFileContents({
+      owner: OWNER,
+      repo: REPO,
+      path: 'Js/contatos.json',
+      message: `Novo contato salvo em ${new Date().toLocaleString('pt-BR')}`,
+      content: content,
+      sha: existingFile?.data?.sha, // SHA necessário se o arquivo já existe
+    });
+  } catch (error) {
+    console.error('Erro ao salvar no GitHub:', error);
+    throw error;
+  }
+}
+
 async function triggerGitHubDispatch(contatos) {
   await octokit.repos.createDispatchEvent({
     owner: OWNER,
@@ -40,8 +65,13 @@ app.post('/api/contato', async (req, res) => {
 
     const novoContato = { ...req.body, data: new Date().toISOString() };
     contatos.push(novoContato);
+    
+    // Salva localmente
     fs.writeFileSync(contatosPath, JSON.stringify(contatos, null, 2), 'utf8');
-
+    
+    // Salva no GitHub
+    await saveContatoToGitHub(contatos);
+    
     await triggerGitHubDispatch(contatos);
 
     return res.json({ ok: true, total: contatos.length });
