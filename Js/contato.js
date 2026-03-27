@@ -1,5 +1,5 @@
 // contato.js - Salva contatos direto no repositório do GitHub
-const GITHUB_TOKEN = 'seu_token_aqui'; // Configure com um Personal Access Token
+const GITHUB_TOKEN = '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'; // Configure com um Personal Access Token
 const REPO_OWNER = 'johnsongomes';
 const REPO_NAME = 'meu-primeiro-portifolio';
 const FILE_PATH = 'Js/contatos.json';
