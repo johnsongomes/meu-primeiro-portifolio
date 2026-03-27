@@ -31,22 +31,22 @@ window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 //script formulario de contato
- document.getElementById('#form-contato').addEventListener('submit', function (e) {
-     e.preventDefault();
-     const nome2 = document.getElementById('#nome2').value.trim();
-     const email = document.getElementById('#email').value.trim();
-     const mensagem = document.getElementById('#mensagem').value.trim();
+document.getElementById('form-contato').addEventListener('submit', function (e) {
+e.preventDefault();
+const nome2 = document.getElementById('nome2').value.trim();
+const email = document.getElementById('email').value.trim();
+const mensagem = document.getElementById('mensagem').value.trim();
 
-     if (!nome2 || !email || !mensagem) {
-         alert('Por favor, preencha todos os campos do formulário.');
-         return;
-     }
+if (!nome2 || !email || !mensagem) {
+    alert('Por favor, preencha todos os campos do formulário.');
+    return;
+}
 
-     alert(`Obrigado, ${nome2}! Sua mensagem foi enviada com sucesso.\n\nE-mail: ${email}\nMensagem: ${mensagem}`);
+alert(`Obrigado, ${nome2}! Sua mensagem foi enviada com sucesso.\n\nE-mail: ${email}\nMensagem: ${mensagem}`);
 
-     const contatos = JSON.parse(localStorage.getItem('contatos')) || [];
-     contatos.push({ nome: nome2, email, mensagem, data: new Date().toISOString() });
-     localStorage.setItem('contatos', JSON.stringify(contatos));
+const contatos = JSON.parse(localStorage.getItem('contatos')) || [];
+contatos.push({ nome: nome2, email, mensagem, data: new Date().toISOString() });
+localStorage.setItem('contatos', JSON.stringify(contatos));
 
-     this.reset();
+this.reset();
  });
