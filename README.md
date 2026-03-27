@@ -14,11 +14,11 @@
           <!-- HEADER -->
           <header class="bg-dark text-white py-4">
                <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-                    <a href="/index.html" class="h4 mb-0 text-white">Johnson Gomes</a>
+                    <a href="index.html" class="h4 mb-0 text-white">Johnson Gomes</a>
                     <nav class="mt-2 mt-md-0">
-                         <a href="#sobre" class="text-white me-3"><i class="bi bi-person-circle"></i>Sobre</a>
-                         <a href="#projetos" class="text-white me-3"><i class="bi bi-code-slash"></i>Projetos</a>
-                         <a href="#contato" class="text-white"><i class="bi bi-envelope"></i>Contato</a>
+                         <a href="pages/sobre.html" class="text-white me-3"><i class="bi bi-person-circle"></i>Sobre</a>
+                         <a href="pages/projetos.html" class="text-white me-3"><i class="bi bi-code-slash"></i>Projetos</a>
+                         <a href="pages/contato.html" class="text-white"><i class="bi bi-envelope"></i>Contato</a>
                     </nav>
                </div>
           </header>
@@ -26,15 +26,11 @@
           <section id="sobre" class="container py-5">
                <div style="text-align: center;">
                     <div>
-                         <img src="/img/eu.jpg" alt="Foto de perfil" class="rounded-circle img-fluid" style="max-width: 200px;"/>
-                    </div>
-                    <div class="col-md-8">
-                         <h2>Sobre mim</h2>
-                         <p>Olá! Sou estudante de análise e desenvolvimento de sistemas e este é meu primeiro portfólio. Gosto de aprender novas tecnologias e construir soluções criativas. Tenho interesse em front-end, back-end e desenvolvimento de jogos. Também me interesso por usabilidade e acessibilidade digital. Estou constantemente em busca de novos desafios para aplicar e aperfeiçoar minhas habilidades técnicas.</p>
+                         <img src="img/eu.jpg" alt="Foto de perfil" class="rounded-circle img-fluid" style="max-width: 200px;"/>
                     </div>
                </div>
           </section>
-          <!--PROJETOS-->
+          <!--PROJETOS
           <section id="projetos" class="container py-5 bg-white">
           <h2>Projetos</h2>
           <div class="row">
@@ -55,10 +51,10 @@
                     </div>
                </div>
           </div>
-          </section>
+          </section>-->
           <section id="apresentacao" class="container py-5">
-            <h2 style="text-align: center;">Desblokear links</h2>
-                <form" id="form-primario" style="max-width: 400px; margin: 0 auto;">
+            <h2 style="text-align: center;">Desblokear links no roda pé</h2>
+                <form id="form-primario" style="max-width: 400px; margin: 0 auto;">
                     <div class="mb-3">
                         <label for="nome" class="form-label">escreva seu nome para obter links e me conhecer melhor</label>
                         <input type="text" class="form-control" id="nome" required />
@@ -66,7 +62,7 @@
                     <button type="click" class="btn btn-primary" style="text-align: center;">Enviar</button>
                 </form>
             </section> 
-            <!-- CONTATO -->
+          <!--CONTATO
           <section id="contato" class="container py-5">
                <h2>Contato</h2>
                <form id="form-contato">
@@ -84,7 +80,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                </form>
-          </section>
+          </section>-->
           <!-- FOOTER -->
           <footer class="bg-dark text-white text-center py-4">
                <p class="mb-2"><i class="bi bi-c-circle"></i> 2026 - Johnson Gomes</p>
@@ -92,7 +88,7 @@
           </footer>
           <!-- BOTÃO VOLTAR AO TOPO -->
           <button id="btn-topo" class="btn btn-primary position-fixed bottom-0 end-0 m-4" style="display: none;"><i class="bi bi-arrow-up-short"></i></button>
-          <script src="JS/script.js"></script>
+          <script src="js/script.js"></script>
      </body>
           <p id="roda-pe">Essa é a minha página.</p>
 </html>
