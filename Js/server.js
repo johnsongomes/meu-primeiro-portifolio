@@ -9,6 +9,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors()); // Permite requisições de qualquer origem
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '..'))); // Serve arquivos estáticos da pasta pai
 
 const GITHUB_TOKEN = process.env.GH_TOKEN;
 const REPOSITORY = process.env.GITHUB_REPOSITORY || 'johnsongomes/meu-primeiro-portifolio';
