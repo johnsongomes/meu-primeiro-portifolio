@@ -70,12 +70,12 @@ if (formContato) {
 }
 
 
-document.getElementById('form-contato').addEventListener('submit', async (e) => {
-  e.preventDefault();
+formcontato.addEventListener('submit', async (ev) => {
+  ev.preventDefault();
   const contato = {
-    nome: document.getElementById('nome').value,
-    email: document.getElementById('email').value,
-    mensagem: document.getElementById('mensagem').value
+    nome: document.getElementById('nome').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    mensagem: document.getElementById('mensagem').value.trim()
   };
   const resultado = await salvarContatoNoGitHub(contato);
   if (resultado.ok) {
