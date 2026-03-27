@@ -16,9 +16,9 @@
                <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
                     <a href="/index.html" class="h4 mb-0 text-white">Johnson Gomes</a>
                     <nav class="mt-2 mt-md-0">
-                         <a href="/pages/sobre.html" class="text-white me-3"><i class="bi bi-person-circle"></i>Sobre</a>
-                         <a href="/pages/projetos.html" class="text-white me-3"><i class="bi bi-code-slash"></i>Projetos</a>
-                         <a href="/pages/contato.html" class="text-white"><i class="bi bi-envelope"></i>Contato</a>
+                         <a href="#sobre" class="text-white me-3"><i class="bi bi-person-circle"></i>Sobre</a>
+                         <a href="#projetos" class="text-white me-3"><i class="bi bi-code-slash"></i>Projetos</a>
+                         <a href="#contato" class="text-white"><i class="bi bi-envelope"></i>Contato</a>
                     </nav>
                </div>
           </header>
@@ -28,21 +28,21 @@
                     <div>
                          <img src="/img/eu.jpg" alt="Foto de perfil" class="rounded-circle img-fluid" style="max-width: 200px;"/>
                     </div>
-                    <!--<div class="col-md-8">
+                    <div class="col-md-8">
                          <h2>Sobre mim</h2>
                          <p>Olá! Sou estudante de análise e desenvolvimento de sistemas e este é meu primeiro portfólio. Gosto de aprender novas tecnologias e construir soluções criativas. Tenho interesse em front-end, back-end e desenvolvimento de jogos. Também me interesso por usabilidade e acessibilidade digital. Estou constantemente em busca de novos desafios para aplicar e aperfeiçoar minhas habilidades técnicas.</p>
-                    </div>-->
+                    </div>
                </div>
           </section>
-          <!--PROJETOS
+          <!--PROJETOS-->
           <section id="projetos" class="container py-5 bg-white">
           <h2>Projetos</h2>
           <div class="row">
                <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
                          <div class="card-body">
-                              <h5 class="card-title">Projeto 1</h5>
-                              <p class="card-text">Descrição breve do projeto.</p>
+                              <a class="card-title" href="https://ghostsskullslevels.itch.io/jornada-do-passarin" target="_blank">Jornada do Passarin</a>
+                              <p class="card-text">Jogo feito a alguns anos atrás. quando eu estava aprendendo a programação.</p>
                          </div>
                     </div>
                </div>
@@ -55,17 +55,36 @@
                     </div>
                </div>
           </div>
-          </section> -->
+          </section>
           <section id="apresentacao" class="container py-5">
             <h2 style="text-align: center;">Desblokear links</h2>
-                <form id="form-contato">
+                <form" id="form-primario" style="max-width: 400px; margin: 0 auto;">
                     <div class="mb-3">
                         <label for="nome" class="form-label">escreva seu nome para obter links e me conhecer melhor</label>
                         <input type="text" class="form-control" id="nome" required />
                     </div>
-                    <button type="submit" class="btn btn-primary" style="text-align: center;">Enviar</button>
+                    <button type="click" class="btn btn-primary" style="text-align: center;">Enviar</button>
                 </form>
-            </section>
+            </section> 
+            <!-- CONTATO -->
+          <section id="contato" class="container py-5">
+               <h2>Contato</h2>
+               <form id="form-contato">
+                    <div class="mb-3">
+                         <label for="nome" class="form-label">Nome</label>
+                         <input type="text" class="form-control" id="nome2" required />
+                    </div>
+                    <div class="mb-3">
+                         <label for="email" class="form-label">E-mail</label>
+                         <input type="email" class="form-control" id="email" required />
+                    </div>
+                    <div class="mb-3">
+                         <label for="mensagem" class="form-label">Mensagem</label>
+                         <textarea class="form-control" id="mensagem" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+               </form>
+          </section>
           <!-- FOOTER -->
           <footer class="bg-dark text-white text-center py-4">
                <p class="mb-2"><i class="bi bi-c-circle"></i> 2026 - Johnson Gomes</p>
