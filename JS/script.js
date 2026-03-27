@@ -13,7 +13,7 @@ function mostrarMensagem() {
 
     resultado.textContent = "Olá, " + nome + "! Bem-vindo ao meu site. click aqui --->>";
     resultado.style.color = "#006400";
-    resultado.insertAdjacentHTML("beforeend", " <a href=\"https://www.youtube.com/@Johnsongomesof\" id=\"link-resultado\" class=\"text-black me-3\"><i class=\"bi bi-youtube\"></i>Youtube</a>, <a href=\"/sobre.html\" class=\"text-black me-3\"><i class=\"bi bi-person-circle\"></i>Sobre</a>, <a href=\"/projetos.html\" class=\"text-black me-3\"><i class=\"bi bi-code-slash\"></i>Projetos</a>, <a href=\"/contato.html\" class=\"text-black me-3\"><i class=\"bi bi-envelope\"></i>Contato</a>");}
+    resultado.insertAdjacentHTML("beforeend", "<div><a href=\"https://github.com/johnsongomes\" class=\"text-white me-3\"><i class=\"bi bi-github\"></i></a><div><a href=\"https://www.youtube.com/@Johnsongomesof\" class=\"text-white me-3\"><i class=\"bi bi-youtube\"></i></a><a href=\"https://www.linkedin.com/in/johnson-gomes-19060295/\" class=\"text-white me-3\"><i class=\"bi bi-linkedin\"></i></a><a href=\"mailto:johnsongomes@gmail.com\" class=\"text-white\"><i class=\"bi bi-envelope\"></i></a></div>");}
 
 document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault(); // Impede o envio do formulário
