@@ -14,17 +14,48 @@
           <!-- HEADER -->
           <header class="bg-dark text-white py-4">
                <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-                    <h1 class="h4 mb-0">Johnson Gomes</h1>
+                    <a href="/main.html" class="h4 mb-0 text-white">Johnson Gomes</a>
                     <nav class="mt-2 mt-md-0">
-                         <a href="#sobre" class="text-white me-3"><i class="bi bi-person-circle"></i>Sobre</a>
-                         <a href="#projetos" class="text-white me-3"><i class="bi bi-code-slash"></i>Projetos</a>
-                         <a href="#contato" class="text-white"><i class="bi bi-envelope"></i>Contato</a>
+                         <a href="/sobre.html" class="text-white me-3"><i class="bi bi-person-circle"></i>Sobre</a>
+                         <a href="/projetos.html" class="text-white me-3"><i class="bi bi-code-slash"></i>Projetos</a>
+                         <a href="/contato.html" class="text-white"><i class="bi bi-envelope"></i>Contato</a>
                     </nav>
                </div>
           </header>
-          <h1 class="mb-4" id="apre">Olá! Eu sou Johnson Gomes.</h1>
-          <img src="IMGS/eu.jpg" alt="eu">
-          <h2>Sou um entusiasta de tecnologia e programação, e alem de tudo sou escritor e musico.</h2>
+          <!-- SOBRE MIM -->
+          <section id='sobre' class='container py-5'>
+               <div class='row align-items-center'>
+                    <div class='col-md-4 text-center mb-4 mb-md-0'>
+                         <img src='/IMGS/eu.jpg' alt='Foto de perfil' class='rounded-circle img-fluid' style='max-width: 200px;' />
+                    </div>
+                    <div class='col-md-8'>
+                         <h2>Sobre mim</h2>
+                         <p>Olá! Sou estudante de análise e desenvolvimento de sistemas e este é meu primeiro portfólio. Gosto de aprender novas tecnologias e construir soluções criativas. Tenho interesse em front-end, back-end e desenvolvimento de jogos. Também me interesso por usabilidade e acessibilidade digital. Estou constantemente em busca de novos desafios para aplicar e aperfeiçoar minhas habilidades técnicas.</p>
+                    </div>
+               </div>
+          </section>
+          <!-- PROJETOS -->
+          <section id='projetos' class='container py-5 bg-white'>
+          <h2>Projetos</h2>
+          <div class='row'>
+               <div class='col-md-4 mb-4'>
+               <div class='card h-100 shadow-sm'>
+                    <div class='card-body'>
+                         <h5 class='card-title'>Projeto 1</h5>
+                         <p class='card-text'>Descrição breve do projeto.</p>
+                    </div>
+               </div>
+               </div>
+               <div class='col-md-4 mb-4'>
+               <div class='card h-100 shadow-sm'>
+                    <div class='card-body'>
+                         <h5 class='card-title'>Projeto 2</h5>
+                         <p class='card-text'>Descrição breve do projeto.</p>
+                    </div>
+               </div>
+               </div>
+          </div>
+          </section>
           <form action="/cadastro" method="post">
                 <label for="nome">Qual O Seu Nome:</label>
                 <input type="text" id="nome" placeholder="Seu nome Aqui" required>
