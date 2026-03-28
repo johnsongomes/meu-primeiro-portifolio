@@ -67,7 +67,7 @@ if (formContato) {
         localStorage.setItem('contatos', JSON.stringify(contatos));
 
     }); 
-    formContato.addEventListener('submit', (ev) => {
+    formContato.addEventListener('submit', async(ev) => {
         ev.preventDefault();
         const contato = {
             nome: document.getElementById('nome').value.trim(),
