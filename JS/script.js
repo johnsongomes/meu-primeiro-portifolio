@@ -13,7 +13,8 @@ function mostrarMensagem() {
 
     resultado.textContent = "Olá, " + nome + "! Bem-vindo ao meu site. click aqui --->>";
     resultado.style.color = "#006400";
-    resultado.insertAdjacentHTML("beforeend", "<div><a href=\"https://github.com/johnsongomes\" class=\"text-white me-3\"><i class=\"bi bi-github\"></i></a><div><a href=\"https://www.youtube.com/@Johnsongomesof\" class=\"text-white me-3\"><i class=\"bi bi-youtube\"></i></a><a href=\"https://www.linkedin.com/in/johnson-gomes-19060295/\" class=\"text-white me-3\"><i class=\"bi bi-linkedin\"></i></a><a href=\"mailto:johnsongomes@gmail.com\" class=\"text-white\"><i class=\"bi bi-envelope\"></i></a></div>");}
+    resultado.insertAdjacentHTML("beforeend", "<div><a href=\"https://github.com/johnsongomes\" class=\"text-white me-3\"><i class=\"bi bi-github\"></i></a><div><a href=\"https://www.youtube.com/@Johnsongomesof\" class=\"text-white me-3\"><i class=\"bi bi-youtube\"></i></a><a href=\"https://www.linkedin.com/in/johnson-gomes-19060295/\" class=\"text-white me-3\"><i class=\"bi bi-linkedin\"></i></a><a href=\"mailto:johnsongomes@gmail.com\" class=\"text-white\"><i class=\"bi bi-envelope\"></i></a></div>");
+}
 
 const formPrimario = document.querySelector("#form-primario");
 if (formPrimario) {
@@ -66,7 +67,7 @@ if (formContato) {
         localStorage.setItem('contatos', JSON.stringify(contatos));
 
     }); 
-    formcontato.addEventListener('submit', function(ev) => {
+    formContato.addEventListener('submit', (ev) => {
         ev.preventDefault();
         const contato = {
             nome: document.getElementById('nome').value.trim(),
