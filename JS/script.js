@@ -68,20 +68,20 @@ if (formContato) {
         this.reset();
     }); 
     formcontato.addEventListener('submit', function(ev) => {
-    ev.preventDefault();
-    const contato = {
-        nome: document.getElementById('nome').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        mensagem: document.getElementById('mensagem').value.trim()
-     };
-     const resultado2 = await salvarContatoNoGitHub(contato);
-     if (resultado2.ok) {
-        alert('✅ Contato salvo com sucesso!');
-        document.getElementById('form-contato').reset();
-     } 
-     else {
-         alert('❌ Erro: ' + resultado2.error);
-     }
+        ev.preventDefault();
+        const contato = {
+            nome: document.getElementById('nome').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            mensagem: document.getElementById('mensagem').value.trim()
+         };
+         const resultado2 = await salvarContatoNoGitHub(contato);
+         if (resultado2.ok) {
+             alert('✅ Contato salvo com sucesso!');
+             document.getElementById('form-contato').reset();
+         } 
+         else {
+             alert('❌ Erro: ' + resultado2.error);
+         }
      });
 }
 
