@@ -65,7 +65,6 @@ if (formContato) {
         contatos.push({ nome: nome, email: email, mensagem: mensagem, data: new Date().toISOString() });
         localStorage.setItem('contatos', JSON.stringify(contatos));
 
-        this.reset();
     }); 
     formcontato.addEventListener('submit', function(ev) => {
         ev.preventDefault();
@@ -82,6 +81,8 @@ if (formContato) {
          else {
              alert('❌ Erro: ' + resultado2.error);
          }
+
+        this.reset();
      });
 }
 
