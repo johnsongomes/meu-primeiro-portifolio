@@ -40,30 +40,16 @@ ensureContactsTable().catch((error) => {
   process.exit(1);
 });
 
-
-const octokit = new Octokit({ auth: GITHUB_TOKEN });
-
-async function triggerGitHubDispatch(contatos) {
-  await octokit.repos.createDispatchEvent({
-    owner: OWNER,
-    repo: REPO,
-    event_type: 'contato-salvo',
-    client_payload: { contatos },
-  });
-}
-
 app.post('/api/contato', async (req, res) => {
   try {
-    const contatosPath = path.join(__dirname, 'contatos.json');
-    const contatos = fs.existsSync(contatosPath)
-      ? JSON.parse(fs.readFileSync(contatosPath, 'utf8'))
-      : [];
+    const { nome, email, mensagem } = req.body;
+    const data = new Date();
 
-    const novoContato = { ...req.body, data: new Date().toISOString() };
-    contatos.push(novoContato);
-    fs.writeFileSync(contatosPath, JSON.stringify(contatos, null, 2), 'utf8');
-
-    await triggerGitHubDispatch(contatos);
+    // Salva no MySQL local
+    const [result] = await pool.execute(
+      'INSERT INTO contatos (nome, email, mensagem, data, payload) VALUES (?, ?, ?, ?, ?)',
+      [nome || null, email || null, mensagem || null, data, JSON.stringify(req.body)]
+    );
 
     return res.json({ ok: true, mysqlId: result.insertId });
   } catch (error) {
