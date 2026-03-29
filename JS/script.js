@@ -13,7 +13,8 @@ function mostrarMensagem() {
 
     resultado.textContent = "Olá, " + nome + "! Bem-vindo ao meu site. click aqui --->>";
     resultado.style.color = "#006400";
-    resultado.insertAdjacentHTML("beforeend", "<div><a href=\"https://github.com/johnsongomes\" class=\"text-white me-3\"><i class=\"bi bi-github\"></i></a><div><a href=\"https://www.youtube.com/@Johnsongomesof\" class=\"text-white me-3\"><i class=\"bi bi-youtube\"></i></a><a href=\"https://www.linkedin.com/in/johnson-gomes-19060295/\" class=\"text-white me-3\"><i class=\"bi bi-linkedin\"></i></a><a href=\"mailto:johnsongomes@gmail.com\" class=\"text-white\"><i class=\"bi bi-envelope\"></i></a></div>");}
+    resultado.insertAdjacentHTML("beforeend", "<div><a href=\"https://github.com/johnsongomes\" class=\"text-white me-3\"><i class=\"bi bi-github\"></i></a><div><a href=\"https://www.youtube.com/@Johnsongomesof\" class=\"text-white me-3\"><i class=\"bi bi-youtube\"></i></a><a href=\"https://www.linkedin.com/in/johnson-gomes-19060295/\" class=\"text-white me-3\"><i class=\"bi bi-linkedin\"></i></a><a href=\"mailto:johnsongomes@gmail.com\" class=\"text-white\"><i class=\"bi bi-envelope\"></i></a></div>");
+}
 
 const formPrimario = document.querySelector("#form-primario");
 if (formPrimario) {
@@ -65,7 +66,24 @@ if (formContato) {
         contatos.push({ nome: nome, email: email, mensagem: mensagem, data: new Date().toISOString() });
         localStorage.setItem('contatos', JSON.stringify(contatos));
 
-        this.reset();
     }); 
+    formContato.addEventListener('submit', async(ev) => {
+        ev.preventDefault();
+        const contato = {
+            nome: document.getElementById('nome').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            mensagem: document.getElementById('mensagem').value.trim()
+         };
+         const resultado2 = await salvarContatoNoGitHub(contato);
+         if (resultado2.ok) {
+             alert('✅ Contato salvo com sucesso!');
+             document.getElementById('form-contato').reset();
+         } 
+         else {
+             alert('❌ Erro: ' + resultado2.error);
+         }
+
+        this.reset();
+     });
 }
 
