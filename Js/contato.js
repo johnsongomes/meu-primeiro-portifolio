@@ -17,7 +17,16 @@ async function salvarContatoNoGitHub(novoContato) {
       }
     );
 
-    let contatos = [];
+    let     const API_URL = 'https://<seu-projeto>.vercel.app/api/contato';
+    
+    async function enviarContato(contato) {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contato)
+      });
+      return res.json();
+    }contatos = [];
     let sha = null;
 
     if (response.ok) {
