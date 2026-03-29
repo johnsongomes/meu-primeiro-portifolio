@@ -38,7 +38,8 @@ async function ensureContactsTable() {
 ensureContactsTable().catch((error) => {
   console.error('Erro ao garantir tabela contatos MySQL:', error);
   process.exit(1);
-}
+});
+
 
 const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
