@@ -58,6 +58,6 @@ app.post('/api/contato', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log('Servidor iniciado em http://localhost:3000');
+app.listen(3001, () => {
+  console.log('Servidor iniciado em http://localhost:3001');
 });
