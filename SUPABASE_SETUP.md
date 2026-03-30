@@ -10,7 +10,21 @@
    - Senha do banco: 97697948Jo@
 
 ## 2️⃣ Criar Tabela de Contatos
+CREATE TABLE contatos (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  nome VARCHAR(30) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  mensagem TEXT NOT NULL,
+  criado_em TIMESTAMPTZ DEFAULT NOW()
+);
 
+ALTER TABLE contatos ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Anyone can insert"
+  ON contatos FOR INSERT WITH CHECK (true);
+
+CREATE POLICY "Anyone can read"
+  ON contatos FOR SELECT WITH CHECK (true);
 No painel do Supabase:
 
 1. Vá para **SQL Editor** (ou crie uma tabela via interface)
