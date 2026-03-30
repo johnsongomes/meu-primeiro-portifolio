@@ -5,7 +5,7 @@
 1. Acesse [supabase.com](https://supabase.com)
 2. Clique em **Sign Up** e faça login com GitHub
 3. Crie um novo projeto:
-   - Nome: `meu-primeiro-portifolio`
+   - Nome: `johnsongomes's Project`
    - Região: `South America (São Paulo)` 
    - Senha do banco: Guarde com segurança
 
