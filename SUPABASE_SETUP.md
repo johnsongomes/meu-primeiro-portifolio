@@ -7,7 +7,7 @@
 3. Crie um novo projeto:
    - Nome: `johnsongomes's Project`
    - Região: `South America (São Paulo)` 
-   - Senha do banco: Guarde com segurança
+   - Senha do banco: 97697948Jo@
 
 ## 2️⃣ Criar Tabela de Contatos
 
