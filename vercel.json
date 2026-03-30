@@ -6,7 +6,27 @@
       "dest": "/api/contato.js"
     },
     {
-      "src": "/(.*)",
+      "src": "/pages/(.*)",
+      "dest": "/pages/$1"
+    },
+    {
+      "src": "/CSS/(.*)",
+      "dest": "/CSS/$1"
+    },
+    {
+      "src": "/Js/(.*)",
+      "dest": "/Js/$1"
+    },
+    {
+      "src": "/img/(.*)",
+      "dest": "/img/$1"
+    },
+    {
+      "src": "/(.*\\.[a-z]+)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/",
       "dest": "/index.html"
     }
   ],
