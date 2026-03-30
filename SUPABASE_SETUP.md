@@ -19,8 +19,8 @@ No painel do Supabase:
 ```sql
 CREATE TABLE contatos (
   id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  nome VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
+  nome VARCHAR(30) NOT NULL,
+  email VARCHAR(50) NOT NULL,
   mensagem TEXT NOT NULL,
   criado_em TIMESTAMPTZ DEFAULT NOW()
 );
