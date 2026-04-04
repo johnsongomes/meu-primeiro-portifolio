@@ -1,52 +1,618 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-     <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Sobre Mim - Johnson Gomes</title>
-          <!-- Link para o arquivo CSS e Bootstrap -->
-          <link rel="stylesheet" href="../CSS/estilo.css">
-          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-          <!-- Bootstrap icons -->
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-     </head>
-     <body class="bg-light">
-        <!-- HEADER -->
-        <header class="bg-dark text-white py-4">
-            <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <a href="../index.html" class="h4 mb-0 text-white">Johnson Gomes</a>
-                <nav class="mt-2 mt-md-0">
-                        <a href="sobre.html" class="text-white me-3"><i class="bi bi-person-circle"></i>Sobre</a>
-                        <a href="projetos.html" class="text-white me-3"><i class="bi bi-code-slash"></i>Projetos</a>
-                        <a href="contato.html" class="text-white"><i class="bi bi-envelope"></i>Contato</a>
-                    </nav>
-                </div>
-        </header>
-        <!-- SOBRE MIM -->
-        <section id="sobre" class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-md-4 text-center mb-4 mb-md-0">
-                    <img src="../img/eu.jpg" alt="Foto de perfil" class="rounded-circle img-fluid" style="max-width: 200px;" />
-                </div>
-                <div class="col-md-8">
-                    <h2>Sobre mim</h2>
-                    <p>Olá! Sou estudante de Análise e Desenvolvimento de Sistemas e este é o meu primeiro portfólio. Tenho paixão por tecnologia e estou sempre em busca de aprender novas ferramentas e aprimorar minhas habilidades.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Mim | Johnson Gomes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
 
-Tenho interesse em desenvolvimento **front-end, back-end e criação de jogos**, além de me dedicar a conceitos de **usabilidade e acessibilidade digital**, buscando sempre criar soluções eficientes e centradas no usuário.
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: rgba(255,255,255,0.07);
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --card: #16161f;
+    }
 
-Sou movido por desafios e estou constantemente aplicando meus conhecimentos em projetos práticos para evoluir como desenvolvedor.
-</p>
-                    <p>"Além da programação, também sou **escritor e músico**, o que fortalece minha criatividade e contribui para uma abordagem mais inovadora na resolução de problemas."</p>
-                </div>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.18;
+    }
+    .blob-1 { width: 500px; height: 500px; background: var(--accent); top: -150px; right: -100px; }
+    .blob-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; left: -80px; }
+
+    /* ── NAV ─────────────────────────── */
+    header {
+      position: fixed;
+      top: 0; width: 100%;
+      z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(10,10,15,0.7);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+
+    nav { display: flex; align-items: center; gap: 0.25rem; }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--text); background: var(--border); }
+    nav a.cta { background: var(--accent); color: #fff; margin-left: 0.5rem; }
+    nav a.cta:hover { background: #6d28d9; }
+
+    .menu-toggle {
+      display: none;
+      background: none; border: none;
+      color: var(--text); font-size: 1.5rem; cursor: pointer;
+    }
+
+    /* ── LAYOUT ──────────────────────── */
+    section { position: relative; z-index: 1; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1; max-width: 40px;
+      height: 1px; background: var(--accent2);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Syne', sans-serif;
+      letter-spacing: -0.03em;
+    }
+    h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.05; }
+    h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 700; }
+
+    /* ── HERO SOBRE ──────────────────── */
+    #sobre-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .sobre-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .page-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(6,182,212,0.1);
+      border: 1px solid rgba(6,182,212,0.25);
+      color: var(--accent2);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-desc {
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+      margin-top: 1.25rem;
+      max-width: 480px;
+    }
+
+    /* ── FOTO ────────────────────────── */
+    .photo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    .photo-frame {
+      position: relative;
+      width: 340px; height: 340px;
+    }
+    .photo-frame::before {
+      content: '';
+      position: absolute; inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      z-index: 0;
+    }
+    .photo-frame::after {
+      content: '';
+      position: absolute; inset: -18px;
+      border-radius: 50%;
+      border: 1px solid rgba(124,58,237,0.15);
+      z-index: 0;
+    }
+    .photo-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      position: relative; z-index: 1;
+      border: 4px solid var(--bg);
+    }
+
+    /* ── INFO CARDS ──────────────────── */
+    #info { padding: 7rem 0; background: var(--surface); }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .info-card:hover { border-color: rgba(124,58,237,0.35); transform: translateY(-4px); }
+    .info-card:hover::before { opacity: 1; }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .info-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .info-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    /* ── SOBRE DETALHADO ─────────────── */
+    #detalhe { padding: 7rem 0; }
+
+    .detalhe-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .detalhe-text h2 { margin-bottom: 1.5rem; }
+    .detalhe-text p {
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+    }
+    .detalhe-text p strong { color: var(--text); font-weight: 500; }
+
+    /* ── TIMELINE ─────────────────────── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 1.25rem;
+      position: relative;
+    }
+    .timeline-item:not(:last-child) { padding-bottom: 2.5rem; }
+    .timeline-item:not(:last-child) .tl-line {
+      position: absolute;
+      left: 22px; top: 44px;
+      width: 1px;
+      bottom: 0;
+      background: var(--border);
+      transform: translateX(-50%);
+    }
+
+    .tl-dot {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .tl-content {}
+    .tl-content h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .tl-content span {
+      font-size: 0.8rem;
+      color: var(--accent2);
+      font-weight: 500;
+    }
+    .tl-content p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-top: 0.4rem;
+    }
+
+    /* ── INTERESSES ──────────────────── */
+    #interesses { padding: 7rem 0; background: var(--surface); }
+
+    .interesses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .interesse-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .interesse-item:hover { border-color: rgba(124,58,237,0.35); transform: translateY(-3px); }
+    .interesse-item .emoji { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .interesse-item span { font-size: 0.9rem; font-weight: 500; }
+
+    /* ── CTA ─────────────────────────── */
+    #cta-section {
+      padding: 7rem 0;
+      text-align: center;
+    }
+    #cta-section h2 { margin-bottom: 1rem; }
+    #cta-section p { color: var(--muted); font-weight: 300; max-width: 480px; margin: 0 auto 2rem; }
+    .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { background: var(--surface); border-color: rgba(255,255,255,0.15); }
+
+    /* ── FOOTER ──────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      position: relative; z-index: 1;
+    }
+    footer a { color: var(--accent2); text-decoration: none; }
+
+    /* ── BACK TO TOP ─────────────────── */
+    #btn-topo {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--accent); color: #fff;
+      border: none; cursor: pointer;
+      display: none; align-items: center; justify-content: center;
+      font-size: 1.25rem; z-index: 99;
+      transition: background 0.2s, transform 0.2s;
+    }
+    #btn-topo:hover { background: #6d28d9; transform: translateY(-2px); }
+    #btn-topo.visible { display: flex; }
+
+    /* ── FADE UP ─────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ──────────────────── */
+    @media (max-width: 768px) {
+      .sobre-hero-inner, .detalhe-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .photo-wrap { order: -1; }
+      .photo-frame { width: 220px; height: 220px; }
+      .info-grid { grid-template-columns: 1fr; }
+      nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 1rem; gap: 0.5rem; }
+      nav.open { display: flex; }
+      .menu-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <!-- HEADER -->
+  <header>
+    <a href="../index.html" class="logo">Johnson<span>.</span></a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu"><i class="bi bi-list"></i></button>
+    <nav id="nav-menu">
+      <a href="sobre.html" class="active">Sobre</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="contato.html" class="cta">Contato</a>
+    </nav>
+  </header>
+
+  <!-- HERO DA PÁGINA SOBRE -->
+  <section id="sobre-hero">
+    <div class="container">
+      <div class="sobre-hero-inner">
+        <div class="fade-up">
+          <div class="page-tag">Conheça-me</div>
+          <h1>Sobre<br /><span style="background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">mim</span></h1>
+          <p class="hero-desc">
+            Estudante de Análise e Desenvolvimento de Sistemas, apaixonado por tecnologia,
+            criatividade e por transformar ideias em experiências digitais.
+          </p>
+        </div>
+        <div class="photo-wrap fade-up" style="transition-delay: 0.2s">
+          <div class="photo-frame">
+            <img src="../img/eu.jpg" alt="Foto de Johnson Gomes" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS RÁPIDOS -->
+  <section id="info">
+    <div class="container">
+      <div class="section-label fade-up">Em resumo</div>
+      <div class="info-grid">
+        <div class="info-card fade-up">
+          <span class="card-icon">🎓</span>
+          <h3>Formação</h3>
+          <p>Cursando Análise e Desenvolvimento de Sistemas, com foco em desenvolvimento web e boas práticas de engenharia de software.</p>
+        </div>
+        <div class="info-card fade-up" style="transition-delay: 0.1s">
+          <span class="card-icon">💻</span>
+          <h3>Desenvolvimento</h3>
+          <p>Interesse em front-end, back-end e criação de jogos. Sempre em busca de unir funcionalidade com boa experiência de uso.</p>
+        </div>
+        <div class="info-card fade-up" style="transition-delay: 0.2s">
+          <span class="card-icon">🎨</span>
+          <h3>Criatividade</h3>
+          <p>Além de dev, sou escritor e músico — isso me dá uma visão mais criativa e humana na hora de resolver problemas técnicos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE DETALHADO + TRAJETÓRIA -->
+  <section id="detalhe">
+    <div class="container">
+      <div class="detalhe-grid">
+        <div class="detalhe-text fade-up">
+          <div class="section-label">Minha história</div>
+          <h2>De onde vim e para onde vou</h2>
+          <p>
+            Olá! Sou <strong>Johnson Gomes</strong>, estudante de Análise e Desenvolvimento de
+            Sistemas. Tenho paixão por tecnologia e estou sempre em busca de aprender novas
+            ferramentas e aprimorar minhas habilidades.
+          </p>
+          <p>
+            Tenho interesse em <strong>desenvolvimento front-end, back-end e criação de jogos</strong>,
+            além de me dedicar a conceitos de <strong>usabilidade e acessibilidade digital</strong>,
+            buscando criar soluções eficientes e centradas no usuário.
+          </p>
+          <p>
+            Sou movido por desafios e estou constantemente aplicando meus conhecimentos em
+            projetos práticos para evoluir como desenvolvedor. Além da programação, também sou
+            <strong>escritor e músico</strong>, o que fortalece minha criatividade e contribui
+            para uma abordagem mais inovadora na resolução de problemas.
+          </p>
+        </div>
+        <div class="fade-up" style="transition-delay: 0.15s">
+          <div class="section-label">Trajetória</div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="tl-line"></div>
+              <div class="tl-dot">🚀</div>
+              <div class="tl-content">
+                <h3>Primeiro projeto de jogo</h3>
+                <span>Início da jornada</span>
+                <p>Desenvolvi o Jornada do Passarin, meu primeiro jogo publicado no itch.io, enquanto aprendia programação.</p>
+              </div>
             </div>
-        </section>
-        <!-- FOOTER -->
-        <footer class="bg-dark text-white text-center py-4">
-            <p class="mb-2"><i class="bi bi-c-circle"></i> 2026 - Johnson Gomes</p>
-            <a href="https://github.com/johnsongomes" class="text-white me-3"><i class="bi bi-github"></i></a>
-        </footer>
-        <!-- BOTÃO VOLTAR AO TOPO -->
-        <button id="btn-topo" class="btn btn-primary position-fixed bottom-0 end-0 m-4" style="display: none;"><i class="bi bi-arrow-up-short"></i></button>
-        <script src="../JS/script.js"></script>
-        </body>
+            <div class="timeline-item">
+              <div class="tl-line"></div>
+              <div class="tl-dot">🌐</div>
+              <div class="tl-content">
+                <h3>Desenvolvimento Web</h3>
+                <span>Evolução técnica</span>
+                <p>Mergulhei em HTML, CSS, JavaScript e Bootstrap. Passei a construir interfaces e páginas responsivas.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-line"></div>
+              <div class="tl-dot">🎓</div>
+              <div class="tl-content">
+                <h3>ADS</h3>
+                <span>Formação acadêmica</span>
+                <p>Ingressei no curso de Análise e Desenvolvimento de Sistemas para aprofundar minha base técnica e teórica.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-dot">⚡</div>
+              <div class="tl-content">
+                <h3>Portfólio & Backend</h3>
+                <span>Atualmente</span>
+                <p>Construindo este portfólio com Node.js, Supabase e Vercel. Explorando back-end e integrações modernas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERESSES -->
+  <section id="interesses">
+    <div class="container">
+      <div style="text-align: center;" class="fade-up">
+        <div class="section-label" style="justify-content: center;">O que me move</div>
+        <h2>Interesses & Hobbies</h2>
+      </div>
+      <div class="interesses-grid">
+        <div class="interesse-item fade-up">
+          <span class="emoji">💻</span>
+          <span>Desenvolvimento Web</span>
+        </div>
+        <div class="interesse-item fade-up" style="transition-delay:0.05s">
+          <span class="emoji">🎮</span>
+          <span>Game Dev</span>
+        </div>
+        <div class="interesse-item fade-up" style="transition-delay:0.1s">
+          <span class="emoji">✍️</span>
+          <span>Escrita Criativa</span>
+        </div>
+        <div class="interesse-item fade-up" style="transition-delay:0.15s">
+          <span class="emoji">🎵</span>
+          <span>Música</span>
+        </div>
+        <div class="interesse-item fade-up" style="transition-delay:0.2s">
+          <span class="emoji">♿</span>
+          <span>Acessibilidade</span>
+        </div>
+        <div class="interesse-item fade-up" style="transition-delay:0.25s">
+          <span class="emoji">📐</span>
+          <span>UI/UX Design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta-section" class="fade-up">
+    <div class="container">
+      <h2>Quer trabalhar comigo?</h2>
+      <p>Estou aberto a projetos, colaborações e novas oportunidades. Bora conversar!</p>
+      <div class="btn-group">
+        <a href="contato.html" class="btn btn-primary">
+          <i class="bi bi-envelope"></i> Entrar em contato
+        </a>
+        <a href="projetos.html" class="btn btn-outline">
+          <i class="bi bi-code-slash"></i> Ver projetos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Johnson Gomes · Feito com <span style="color:#f43f5e">♥</span> e muito café</p>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="btn-topo" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short"></i></button>
+
+  <script>
+    // Menu mobile
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+    // Back to top
+    const btnTopo = document.getElementById('btn-topo');
+    window.addEventListener('scroll', () => {
+      btnTopo.classList.toggle('visible', window.scrollY > 400);
+    });
+    btnTopo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Fade-up
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
 </html>
