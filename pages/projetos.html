@@ -1,67 +1,372 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Projetos - Johnson Gomes</title>
-            <!-- Link para o arquivo CSS e Bootstrap -->
-            <link rel="stylesheet" href="CSS/estilo.css">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-            <!-- Bootstrap icons -->
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-        </head>
-        <body class="bg-light">
-            <!-- HEADER -->
-            <header class="bg-dark text-white py-4">
-                <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-                    <a href="../index.html" class="h4 mb-0 text-white">Johnson Gomes</a>
-                    <nav class="mt-2 mt-md-0">
-                            <a href="sobre.html" class="text-white me-3"><i class="bi bi-person-circle"></i>Sobre</a>
-                            <a href="projetos.html" class="text-white me-3"><i class="bi bi-code-slash"></i>Projetos</a>
-                            <a href="contato.html" class="text-white"><i class="bi bi-envelope"></i>Contato</a>
-                        </nav>
-            </header>
-            <!-- PROJETOS -->
-            <section id="projetos" class="container py-5 bg-white">
-            <h2>Projetos</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <a class="card-title" href="https://ghostsskullslevels.itch.io/jornada-do-passarin" target="_blank">Jornada do Passarin</a>
-                            <p class="card-text">Jogo feito a alguns anos atrás. quando eu estava aprendendo a programação.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <a class="card-title" href="https://github.com/johnsongomes/meu-primeiro-portifolio" target="_blank">Projeto portifolio basico</a>
-                            <p class="card-text">Esse é o meu primeiro portfólio construído com HTML, CSS e JavaScript.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <a class="card-title" href="https://a-jornada-do-passarin.vercel.app/" target="_blank">Jornada do Passarin</a>
-                            <p class="card-text">Atualizado e aprimorado com as tecnologias mais recentes e uma estética totalmente renovada.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </section>
-            <!-- FOOTER -->
-            <footer class="bg-dark text-white text-center py-4">
-                <p class="mb-2"><i class="bi bi-c-circle"></i> 2026 - Johnson Gomes</p>
-                <div>
-                    <a href="https://github.com/johnsongomes" class="text-white me-3"><i class="bi bi-github"></i></a>
-                    <a href="https://www.linkedin.com/in/johnson-gomes-19060295/" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
-                    <a href="mailto:johnsongomes@gmail.com" class="text-white"><i class="bi bi-envelope"></i></a>
-                </div>
-            </footer>
-            <!-- BOTÃO VOLTAR AO TOPO -->
-            <button id="btn-topo" class="btn btn-primary position-fixed bottom-0 end-0 m-4" style="display: none;"><i class="bi bi-arrow-up-short"></i></button>
-            <script src="../JS/script.js"></script>
-        </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projetos | Johnson Gomes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: rgba(255,255,255,0.07);
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --card: #16161f;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.03; pointer-events: none; z-index: 0;
+    }
+
+    .blob { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; opacity: 0.15; }
+    .blob-1 { width: 450px; height: 450px; background: var(--accent); top: -120px; left: -80px; }
+    .blob-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; right: -60px; }
+
+    /* ── NAV ─────────────────────────── */
+    header {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: rgba(10,10,15,0.7);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+    nav { display: flex; align-items: center; gap: 0.25rem; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.45rem 0.9rem; border-radius: 6px; transition: color 0.2s, background 0.2s; }
+    nav a:hover, nav a.active { color: var(--text); background: var(--border); }
+    nav a.cta { background: var(--accent); color: #fff; margin-left: 0.5rem; }
+    nav a.cta:hover { background: #6d28d9; }
+    .menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+    /* ── LAYOUT ─── */
+    section { position: relative; z-index: 1; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    .section-label {
+      font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent2);
+      margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--accent2); }
+
+    h1, h2, h3 { font-family: 'Syne', sans-serif; letter-spacing: -0.03em; }
+    h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.05; }
+    h2 { font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 700; }
+
+    /* ── HERO ─── */
+    #hero {
+      min-height: 55vh; display: flex; align-items: center; padding-top: 80px;
+      text-align: center; justify-content: center;
+    }
+    .hero-inner { max-width: 640px; }
+    .page-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.3);
+      color: #a78bfa; font-size: 0.8rem; font-weight: 500;
+      padding: 0.35rem 0.85rem; border-radius: 999px; margin-bottom: 1.5rem;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .hero-desc { color: var(--muted); font-size: 1.05rem; font-weight: 300; margin-top: 1.25rem; }
+
+    /* ── FILTROS ─── */
+    #projetos-section { padding: 5rem 0 7rem; }
+    .filtros { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .filtro-btn {
+      padding: 0.45rem 1rem; border-radius: 999px; border: 1px solid var(--border);
+      background: transparent; color: var(--muted); font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s;
+    }
+    .filtro-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.15); background: var(--surface); }
+    .filtro-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* ── GRID ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .project-card:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-5px); }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-card[data-cat].hidden { display: none; }
+
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.25rem; }
+    .project-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.2);
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    }
+    .project-badge {
+      font-size: 0.72rem; padding: 0.25rem 0.65rem; border-radius: 999px;
+      background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.25);
+      color: var(--accent2); font-weight: 500; white-space: nowrap;
+    }
+
+    .project-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .project-card p { color: var(--muted); font-size: 0.9rem; font-weight: 300; margin-bottom: 1.5rem; flex: 1; }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .tag {
+      font-size: 0.73rem; padding: 0.2rem 0.6rem; border-radius: 999px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--muted);
+    }
+
+    .project-links { display: flex; gap: 0.75rem; margin-top: auto; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.85rem; font-weight: 500; color: var(--accent2);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .project-link:hover { color: #fff; }
+    .project-link.secondary { color: var(--muted); }
+    .project-link.secondary:hover { color: var(--text); }
+
+    /* ── CTA ─── */
+    #cta { padding: 5rem 0 7rem; text-align: center; background: var(--surface); }
+    #cta h2 { margin-bottom: 1rem; }
+    #cta p { color: var(--muted); font-weight: 300; max-width: 440px; margin: 0 auto 2rem; }
+    .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.6rem; border-radius: 8px; font-weight: 500;
+      font-size: 0.95rem; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { background: var(--card); border-color: rgba(255,255,255,0.15); }
+
+    /* ── FOOTER ─── */
+    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--muted); font-size: 0.85rem; position: relative; z-index: 1; }
+    footer a { color: var(--accent2); text-decoration: none; }
+
+    /* ── BACK TO TOP ─── */
+    #btn-topo {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--accent); color: #fff; border: none; cursor: pointer;
+      display: none; align-items: center; justify-content: center;
+      font-size: 1.25rem; z-index: 99; transition: background 0.2s, transform 0.2s;
+    }
+    #btn-topo:hover { background: #6d28d9; transform: translateY(-2px); }
+    #btn-topo.visible { display: flex; }
+
+    /* ── FADE UP ─── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 1rem; gap: 0.5rem; }
+      nav.open { display: flex; }
+      .menu-toggle { display: block; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <header>
+    <a href="../index.html" class="logo">Johnson<span>.</span></a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu"><i class="bi bi-list"></i></button>
+    <nav id="nav-menu">
+      <a href="sobre.html">Sobre</a>
+      <a href="projetos.html" class="active">Projetos</a>
+      <a href="contato.html" class="cta">Contato</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner fade-up">
+        <div class="page-tag">Portfólio</div>
+        <h1>Meus <span style="background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Projetos</span></h1>
+        <p class="hero-desc">Uma seleção do que já desenvolvi — de jogos a aplicações web, cada projeto representa uma etapa da minha evolução como dev.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos-section">
+    <div class="container">
+
+      <!-- Filtros -->
+      <div class="filtros fade-up">
+        <button class="filtro-btn active" data-filter="all">Todos</button>
+        <button class="filtro-btn" data-filter="web">Web</button>
+        <button class="filtro-btn" data-filter="game">Games</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="projects-grid">
+
+        <div class="project-card fade-up" data-cat="game">
+          <div class="card-top">
+            <div class="project-icon">🎮</div>
+            <span class="project-badge">Game Dev</span>
+          </div>
+          <h3>Jornada do Passarin</h3>
+          <p>Meu primeiro jogo publicado, desenvolvido quando estava dando os primeiros passos na programação. Uma aventura em plataforma com mecânicas únicas.</p>
+          <div class="project-tags">
+            <span class="tag">Game Dev</span>
+            <span class="tag">itch.io</span>
+          </div>
+          <div class="project-links">
+            <a href="https://ghostsskullslevels.itch.io/jornada-do-passarin" target="_blank" class="project-link">
+              <i class="bi bi-box-arrow-up-right"></i> Ver no itch.io
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card fade-up" data-cat="game" style="transition-delay:0.08s">
+          <div class="card-top">
+            <div class="project-icon">✨</div>
+            <span class="project-badge">Atualizado</span>
+          </div>
+          <h3>Jornada do Passarin — Remaster</h3>
+          <p>Versão atualizada e aprimorada com as tecnologias mais recentes, estética totalmente renovada e melhorias de jogabilidade.</p>
+          <div class="project-tags">
+            <span class="tag">Game Dev</span>
+            <span class="tag">Vercel</span>
+          </div>
+          <div class="project-links">
+            <a href="https://a-jornada-do-passarin.vercel.app/" target="_blank" class="project-link">
+              <i class="bi bi-box-arrow-up-right"></i> Jogar agora
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card fade-up" data-cat="web" style="transition-delay:0.16s">
+          <div class="card-top">
+            <div class="project-icon">🌐</div>
+            <span class="project-badge">Web</span>
+          </div>
+          <h3>Portfólio Pessoal</h3>
+          <p>Este próprio site! Desenvolvido do zero com HTML, CSS e JavaScript puro. Integração com Supabase para o backend e deploy na Vercel.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">Vercel</span>
+          </div>
+          <div class="project-links">
+            <a href="https://meu-primeiro-portifolio-one.vercel.app" target="_blank" class="project-link">
+              <i class="bi bi-box-arrow-up-right"></i> Ver site
+            </a>
+            <a href="https://github.com/johnsongomes/meu-primeiro-portifolio" target="_blank" class="project-link secondary">
+              <i class="bi bi-github"></i> Código
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card fade-up" data-cat="web" style="transition-delay:0.24s">
+          <div class="card-top">
+            <div class="project-icon">🚧</div>
+            <span class="project-badge">Em breve</span>
+          </div>
+          <h3>Próximo projeto</h3>
+          <p>Algo novo está sendo construído. Acompanhe meu GitHub para ficar por dentro das novidades e projetos em desenvolvimento.</p>
+          <div class="project-tags">
+            <span class="tag">Em progresso</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/johnsongomes" target="_blank" class="project-link">
+              <i class="bi bi-github"></i> Ver GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="fade-up">
+    <div class="container">
+      <h2>Tem um projeto em mente?</h2>
+      <p>Adoro colaborar em ideias novas. Me manda uma mensagem e vamos conversar!</p>
+      <div class="btn-group">
+        <a href="contato.html" class="btn btn-primary"><i class="bi bi-envelope"></i> Falar comigo</a>
+        <a href="https://github.com/johnsongomes" target="_blank" class="btn btn-outline"><i class="bi bi-github"></i> GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Johnson Gomes · Feito com <span style="color:#f43f5e">♥</span> e muito café</p>
+  </footer>
+
+  <button id="btn-topo" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short"></i></button>
+
+  <script>
+    // Menu mobile
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+    // Back to top
+    const btnTopo = document.getElementById('btn-topo');
+    window.addEventListener('scroll', () => btnTopo.classList.toggle('visible', window.scrollY > 400));
+    btnTopo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Fade-up
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    // Filtros
+    document.querySelectorAll('.filtro-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.project-card').forEach(card => {
+          const match = filter === 'all' || card.dataset.cat === filter;
+          card.classList.toggle('hidden', !match);
+        });
+      });
+    });
+  </script>
+</body>
 </html>

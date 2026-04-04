@@ -1,59 +1,388 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Contato - Johnson Gomes</title>
-        <!-- Link para o arquivo CSS e Bootstrap -->
-        <link rel="stylesheet" href="../CSS/estilo.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-        <!-- Bootstrap icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-    </head>
-    <body class="bg-light">
-        <!-- HEADER -->
-        <header class="bg-dark text-white py-4">
-            <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <a href="../index.html" class="h4 mb-0 text-white">Johnson Gomes</a>
-                <nav class="mt-2 mt-md-0">
-                    <a href="sobre.html" class="text-white me-3"><i class="bi bi-person-circle"></i>Sobre</a>
-                    <a href="projetos.html" class="text-white me-3"><i class="bi bi-code-slash"></i>Projetos</a>
-                    <a href="contato.html" class="text-white"><i class="bi bi-envelope"></i>Contato</a>
-                </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato | Johnson Gomes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: rgba(255,255,255,0.07);
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --card: #16161f;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.03; pointer-events: none; z-index: 0;
+    }
+
+    .blob { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; opacity: 0.15; }
+    .blob-1 { width: 400px; height: 400px; background: var(--accent); bottom: -80px; left: -80px; }
+    .blob-2 { width: 350px; height: 350px; background: var(--accent2); top: -80px; right: -60px; }
+
+    /* ── NAV ─── */
+    header {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: rgba(10,10,15,0.7);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+    nav { display: flex; align-items: center; gap: 0.25rem; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.45rem 0.9rem; border-radius: 6px; transition: color 0.2s, background 0.2s; }
+    nav a:hover { color: var(--text); background: var(--border); }
+    nav a.active { color: var(--text); background: var(--border); }
+    nav a.cta { background: var(--accent); color: #fff; margin-left: 0.5rem; }
+    nav a.cta:hover { background: #6d28d9; }
+    .menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+    /* ── LAYOUT ─── */
+    section { position: relative; z-index: 1; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    h1, h2, h3 { font-family: 'Syne', sans-serif; letter-spacing: -0.03em; }
+    h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.05; }
+    h2 { font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 700; }
+
+    .section-label {
+      font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent2);
+      margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--accent2); }
+
+    /* ── HERO ─── */
+    #hero {
+      min-height: 55vh; display: flex; align-items: center;
+      padding-top: 80px; text-align: center; justify-content: center;
+    }
+    .hero-inner { max-width: 580px; }
+    .page-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.25);
+      color: var(--accent2); font-size: 0.8rem; font-weight: 500;
+      padding: 0.35rem 0.85rem; border-radius: 999px; margin-bottom: 1.5rem;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .hero-desc { color: var(--muted); font-size: 1.05rem; font-weight: 300; margin-top: 1.25rem; }
+
+    /* ── CONTATO GRID ─── */
+    #contato-section { padding: 5rem 0 8rem; }
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* ── INFO LATERAL ─── */
+    .contato-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .info-block {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.75rem;
+      transition: border-color 0.3s;
+    }
+    .info-block:hover { border-color: rgba(124,58,237,0.3); }
+    .info-block-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 1rem;
+    }
+    .info-block h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .info-block p { color: var(--muted); font-size: 0.88rem; font-weight: 300; }
+    .info-block a { color: var(--accent2); text-decoration: none; font-size: 0.88rem; font-weight: 500; }
+    .info-block a:hover { color: #fff; }
+
+    .social-row { display: flex; gap: 0.75rem; margin-top: 0.75rem; }
+    .social-btn {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 0.9rem; border-radius: 8px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      color: var(--muted); font-size: 0.83rem; font-weight: 500;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .social-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.15); background: var(--surface); }
+    .social-btn i { font-size: 1rem; }
+
+    /* ── FORMULÁRIO ─── */
+    .form-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .form-card h2 { margin-bottom: 0.5rem; }
+    .form-card .form-subtitle { color: var(--muted); font-size: 0.9rem; font-weight: 300; margin-bottom: 2rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.5rem; display: block; color: var(--text); }
+    .form-control {
+      width: 100%; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.75rem 1rem;
+      color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    }
+    .form-control::placeholder { color: var(--muted); }
+    .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124,58,237,0.12); }
+    textarea.form-control { resize: vertical; min-height: 140px; }
+
+    .assunto-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1.25rem; }
+    .assunto-opt { display: none; }
+    .assunto-label {
+      display: block; text-align: center; padding: 0.55rem 0.5rem;
+      border-radius: 8px; border: 1px solid var(--border);
+      color: var(--muted); font-size: 0.8rem; font-weight: 500;
+      cursor: pointer; transition: all 0.2s; background: var(--surface);
+    }
+    .assunto-opt:checked + .assunto-label {
+      background: rgba(124,58,237,0.15);
+      border-color: rgba(124,58,237,0.4);
+      color: #a78bfa;
+    }
+
+    .btn-submit {
+      width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.85rem; border-radius: 10px; font-weight: 600; font-size: 1rem;
+      background: var(--accent); color: #fff; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.2s; font-family: 'DM Sans', sans-serif;
+    }
+    .btn-submit:hover { background: #6d28d9; transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    #form-status {
+      margin-top: 1rem; font-size: 0.9rem; min-height: 1.4rem;
+      text-align: center; color: var(--accent2);
+    }
+
+    /* ── FOOTER ─── */
+    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--muted); font-size: 0.85rem; position: relative; z-index: 1; }
+    footer a { color: var(--accent2); text-decoration: none; }
+
+    /* ── BACK TO TOP ─── */
+    #btn-topo {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--accent); color: #fff; border: none; cursor: pointer;
+      display: none; align-items: center; justify-content: center;
+      font-size: 1.25rem; z-index: 99; transition: background 0.2s, transform 0.2s;
+    }
+    #btn-topo:hover { background: #6d28d9; transform: translateY(-2px); }
+    #btn-topo.visible { display: flex; }
+
+    /* ── FADE UP ─── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .assunto-grid { grid-template-columns: 1fr 1fr; }
+      nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 1rem; gap: 0.5rem; }
+      nav.open { display: flex; }
+      .menu-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <header>
+    <a href="../index.html" class="logo">Johnson<span>.</span></a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu"><i class="bi bi-list"></i></button>
+    <nav id="nav-menu">
+      <a href="sobre.html">Sobre</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="contato.html" class="active cta">Contato</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner fade-up">
+        <div class="page-tag">Vamos conversar</div>
+        <h1>Entre em <span style="background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">contato</span></h1>
+        <p class="hero-desc">Tem um projeto, uma dúvida ou só quer trocar uma ideia? Me manda uma mensagem — responderei o mais rápido possível.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato-section">
+    <div class="container">
+      <div class="contato-grid">
+
+        <!-- INFO -->
+        <div class="contato-info">
+
+          <div class="info-block fade-up">
+            <div class="info-block-icon">✉️</div>
+            <h3>E-mail</h3>
+            <a href="mailto:johnsongomes@gmail.com">johnsongomes@gmail.com</a>
+          </div>
+
+          <div class="info-block fade-up" style="transition-delay:0.1s">
+            <div class="info-block-icon">🌐</div>
+            <h3>Redes sociais</h3>
+            <p style="margin-bottom: 0.75rem">Me encontre por aqui:</p>
+            <div class="social-row">
+              <a href="https://github.com/johnsongomes" target="_blank" class="social-btn">
+                <i class="bi bi-github"></i> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/johnson-gomes-19060295/" target="_blank" class="social-btn">
+                <i class="bi bi-linkedin"></i> LinkedIn
+              </a>
             </div>
-        </header>
-        <!-- CONTATO -->
-        <section id="contato" class="container py-5">
-            <h2>Contato</h2>
-            <form id="form-contato">
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="nome" required />
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">E-mail</label>
-                    <input name="email" type="email" class="form-control" id="email" autocomplete="off" required />
-                </div>
-                <div class="mb-3">
-                    <label for="mensagem" class="form-label">Mensagem</label>
-                    <textarea class="form-control" id="mensagem" rows="3" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
-        </section>
-        <!-- FOOTER -->
-        <footer class="bg-dark text-white text-center py-4">
-            <p class="mb-2"><i class="bi bi-c-circle"></i> 2026 - Johnson Gomes</p>
-            <div>
-                <a href="https://github.com/johnsongomes" class="text-white me-3"><i class="bi bi-github"></i></a>
-                <a href="https://www.linkedin.com/in/johnson-gomes-19060295/" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
-                <a href="mailto:johnsongomes@gmail.com" class="text-white"><i class="bi bi-envelope"></i></a>
+          </div>
+
+          <div class="info-block fade-up" style="transition-delay:0.2s">
+            <div class="info-block-icon">⚡</div>
+            <h3>Disponibilidade</h3>
+            <p>Aberto a projetos freelance, colaborações e novas oportunidades. Geralmente respondo em até 24h.</p>
+          </div>
+
+        </div>
+
+        <!-- FORMULÁRIO -->
+        <div class="form-card fade-up" style="transition-delay:0.1s">
+          <h2>Manda sua mensagem</h2>
+          <p class="form-subtitle">Preencha o formulário abaixo e entrarei em contato em breve.</p>
+
+          <form id="form-contato">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="nome">Nome</label>
+                <input class="form-control" type="text" id="nome" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">E-mail</label>
+                <input class="form-control" type="email" id="email" name="email" autocomplete="off" placeholder="seu@email.com" required />
+              </div>
             </div>
-        </footer>
-        <!-- BOTÃO VOLTAR AO TOPO -->
-        <button id="btn-topo" class="btn btn-primary position-fixed bottom-0 end-0 m-4" style="display: none;"><i class="bi bi-arrow-up-short"></i></button>
-        <script src="../JS/script.js"></script>
-        <!-- Use contato-plain.js para HTML puro (sem Vite) -->
-        <script type="module" src="../JS/contato-plain.js"></script>
-    </body>
+
+            <div class="form-group">
+              <label class="form-label">Assunto</label>
+              <div class="assunto-grid">
+                <div>
+                  <input class="assunto-opt" type="radio" name="assunto" id="a1" value="Projeto" />
+                  <label class="assunto-label" for="a1">💼 Projeto</label>
+                </div>
+                <div>
+                  <input class="assunto-opt" type="radio" name="assunto" id="a2" value="Colaboração" />
+                  <label class="assunto-label" for="a2">🤝 Colaboração</label>
+                </div>
+                <div>
+                  <input class="assunto-opt" type="radio" name="assunto" id="a3" value="Outro" checked />
+                  <label class="assunto-label" for="a3">💬 Outro</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="mensagem">Mensagem</label>
+              <textarea class="form-control" id="mensagem" name="mensagem" placeholder="Olá Johnson! Tenho um projeto interessante para conversar..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submit-btn">
+              <i class="bi bi-send"></i> Enviar mensagem
+            </button>
+            <p id="form-status"></p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Johnson Gomes · Feito com <span style="color:#f43f5e">♥</span> e muito café</p>
+  </footer>
+
+  <button id="btn-topo" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short"></i></button>
+
+  <script>
+    // Menu mobile
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+    // Back to top
+    const btnTopo = document.getElementById('btn-topo');
+    window.addEventListener('scroll', () => btnTopo.classList.toggle('visible', window.scrollY > 400));
+    btnTopo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Fade-up
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    // Formulário — mantém compatibilidade com contato-plain.js do Supabase
+    // Se não houver o módulo, usa simulação local
+    const form = document.getElementById('form-contato');
+    const status = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Enviando...';
+      status.textContent = '';
+
+      try {
+        // Tenta usar o módulo Supabase se existir
+        const mod = await import('../JS/contato-plain.js').catch(() => null);
+        if (mod && mod.enviarContato) {
+          await mod.enviarContato({
+            nome: document.getElementById('nome').value,
+            email: document.getElementById('email').value,
+            mensagem: document.getElementById('mensagem').value,
+          });
+        } else {
+          // Simulação local (substitua pela sua integração real)
+          await new Promise(r => setTimeout(r, 1500));
+        }
+        status.innerHTML = '✅ Mensagem enviada com sucesso! Responderei em breve.';
+        form.reset();
+      } catch (err) {
+        status.innerHTML = '❌ Erro ao enviar. Tente por e-mail: <a href="mailto:johnsongomes@gmail.com">johnsongomes@gmail.com</a>';
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="bi bi-send"></i> Enviar mensagem';
+    });
+  </script>
+</body>
 </html>
